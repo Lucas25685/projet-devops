@@ -15,11 +15,12 @@ jobs:
     runs-on: ubuntu-latest
     services:
       mariadb:
-        image: mariadb:10.6
+        image: mariadb:latest
         env:
-          MYSQL_ROOT_PASSWORD: ${{ env.DB_PASSWORD }}
-          MYSQL_DATABASE: ${{ env.DB_NAME }}
-        ports: ['3306:3306']
+          MYSQL_ROOT_PASSWORD: rootpass
+          MYSQL_DATABASE: ticketing
+        ports:
+          - 3306:3306
         options: >-
           --health-cmd="mysqladmin ping -h 127.0.0.1 --silent"
           --health-interval=10s
@@ -42,7 +43,7 @@ jobs:
       run: npm run lint
 
     - name: Wait for MariaDB to be ready
-      run: sleep 100
+      run: sleep 20
 
     - name: Seed database
       run: node fixtures/seed.js
