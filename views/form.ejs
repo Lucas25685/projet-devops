@@ -1,0 +1,12 @@
+<form method="POST">
+  <label for="type_id">Type:</label>
+  <select name="type_id" required>
+    <% types.forEach(type => { %>
+      <option value="<%= type.id %>"><%= type.name %></option>
+    <% }) %>
+  </select>
+  <br>
+  <label>Email:</label><input name="email" type="email" required /><br>
+  <label>Message:</label><textarea name="message" required></textarea><br>
+  <button type="submit">Envoyer</button>
+</form>

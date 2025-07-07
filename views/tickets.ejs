@@ -1,0 +1,6 @@
+<h1>Tickets</h1>
+<ul>
+<% tickets.forEach(ticket => { %>
+  <li><strong><%= ticket.type %></strong> - <%= ticket.email %> : <%= ticket.message %></li>
+<% }) %>
+</ul>
