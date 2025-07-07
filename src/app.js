@@ -8,6 +8,7 @@ const ticketRoutes = require('./routes/tickets');
 dotenv.config();
 
 const app = express();
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
@@ -18,9 +19,10 @@ app.use('/tickets', basicAuth({
   challenge: true,
 }), ticketRoutes);
 
-if (require.main === module) {
+if (require.main === module){
   const PORT = process.env.PORT || 3000;
   app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
 }
 
 module.exports = app;

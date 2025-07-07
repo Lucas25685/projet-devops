@@ -1,12 +1,23 @@
 const mariadb = require('mariadb');
 require('dotenv').config();
 
-const pool = mariadb.createPool({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
-  connectionLimit: 5
-});
+const connect = (host, user, password, database = null) => {
+  const config = {
+    host: host || process.env.DB_HOST || 'localhost',
+    user: user || process.env.DB_USER || 'root',
+    password: password || process.env.DB_PASSWORD || 'root',
+  };
+  if (database) {
+    config.database = database;
+  }
+  return mariadb.createPool(config);
+};
 
-module.exports = pool;
+const pool = connect(
+    process.env.DB_HOST,
+    process.env.DB_USER,
+    process.env.DB_PASSWORD,
+    process.env.DB_NAME || 'ticketing'
+);
+
+module.exports = {pool, connect};

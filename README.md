@@ -32,3 +32,9 @@ npm run test:e2e
 Envoyez les identifiants définis dans `.env` :
 - `ADMIN_USER`
 - `ADMIN_PASSWORD`
+
+## BDD
+Lancer la bdd avec
+```bash
+docker run --name mariadb -e MYSQL_ROOT_PASSWORD=root -d -p 3306:3306 mariadb:latest
+```
