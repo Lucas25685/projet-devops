@@ -43,7 +43,18 @@ jobs:
       run: npm run lint
 
     - name: Wait for MariaDB to be ready
-      run: sleep 20
+      run: |
+        for i in {1..30}; do
+          if mysqladmin ping -h mariadb -uroot -prootpass --silent; then
+            echo "MariaDB is ready"
+            exit 0
+          fi
+          echo "Waiting for MariaDB..."
+          sleep 5
+        done
+        echo "MariaDB failed to start"
+        exit 1
+
 
     - name: Seed database
       run: node fixtures/seed.js

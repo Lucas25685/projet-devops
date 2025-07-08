@@ -3,7 +3,7 @@ require('dotenv').config();
 
 const connect = (host, user, password, database = null) => {
   const config = {
-    host: host || process.env.DB_HOST || 'localhost',
+    host: host || process.env.DB_HOST || 'mariadb',
     user: user || process.env.DB_USER || 'root',
     password: password || process.env.DB_PASSWORD || 'root',
   };
