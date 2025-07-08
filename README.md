@@ -36,5 +36,5 @@ Envoyez les identifiants définis dans `.env` :
 ## BDD
 Lancer la bdd avec
 ```bash
-docker run --name mariadb -e MYSQL_ROOT_PASSWORD=rootpass -d -p 3306:3306 mariadb:latest
+docker run --name mariadb -e MYSQL_ROOT_PASSWORD=root -d -p 3306:3306 mariadb:latest
 ```

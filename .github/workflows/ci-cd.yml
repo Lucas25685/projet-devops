@@ -5,9 +5,9 @@ on:
     branches: [ main ]
 
 env:
-  DB_HOST: 127.0.0.1
+  DB_HOST: mariadb
   DB_USER: root
-  DB_PASSWORD: rootpass
+  DB_PASSWORD: root
   DB_NAME: ticketing
 
 jobs:
