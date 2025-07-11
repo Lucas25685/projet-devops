@@ -60,7 +60,7 @@ jobs:
     - name: Run unit tests
       run: npm run test:unit
 
-    - name: Build app
+    - name: Run App
       run: npm run start &
 
     - name: Wait for server
