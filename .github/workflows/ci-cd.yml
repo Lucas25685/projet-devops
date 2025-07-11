@@ -47,7 +47,7 @@ jobs:
     - name: Wait for MariaDB to be ready
       run: |
         for i in {1..30}; do
-          if mysqladmin ping -h mariadb -uroot -proot --silent; then
+          if mysqladmin ping -h ${{ env.DB_HOST }} -uroot -proot --silent; then
             echo "MariaDB is ready"
             exit 0
           fi
