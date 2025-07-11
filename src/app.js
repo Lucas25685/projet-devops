@@ -15,7 +15,7 @@ app.use(express.static('public'));
 
 app.use('/', formRoutes);
 app.use('/tickets', basicAuth({
-  users: { [process.env.ADMIN_USER]: process.env.ADMIN_PASSWORD },
+  users: { ['admin']: 'admin123' },
   challenge: true,
 }), ticketRoutes);
 

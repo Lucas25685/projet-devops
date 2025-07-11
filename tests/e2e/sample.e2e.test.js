@@ -35,7 +35,7 @@ describe('Création de ticket et vérification dans la liste', () => {
       password: 'admin123'
     });
 
-    await page.goto('http://localhost:3000/tickets');
+    await page.goto('http://localhost:3000/tickets/');
 
     const ticketVisible = await page.evaluate((email) => {
       /* eslint-disable-next-line no-undef */
