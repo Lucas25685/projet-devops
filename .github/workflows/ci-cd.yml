@@ -9,8 +9,6 @@ env:
   DB_USER: root
   DB_PASSWORD: root
   DB_NAME: ticketing
-  DOCKER_USERNAME: test
-  DOCKER_PASSWORD: test
 
 jobs:
   build-test-deploy:
@@ -88,5 +86,4 @@ jobs:
         script: |
           docker pull ${{ secrets.DOCKER_USERNAME }}/ticketing-app
           docker stop ticketing-app || true
-          docker rm ticketing-app || true
           docker run -d --name ticketing-app -p 80:3000             -e DB_HOST=localhost             -e DB_USER=${{ secrets.DB_USER }}             -e DB_PASSWORD=${{ secrets.DB_PASSWORD }}             -e DB_NAME=${{ secrets.DB_NAME }}             -e ADMIN_USER=${{ secrets.ADMIN_USER }}             -e ADMIN_PASSWORD=${{ secrets.ADMIN_PASSWORD }}             ${{ secrets.DOCKER_USERNAME }}/ticketing-app
