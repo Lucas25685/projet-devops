@@ -9,6 +9,8 @@ env:
   DB_USER: root
   DB_PASSWORD: root
   DB_NAME: ticketing
+  DOCKER_USERNAME: test
+  DOCKER_PASSWORD: test
 
 jobs:
   build-test-deploy:
@@ -63,10 +65,10 @@ jobs:
     - name: Run E2E tests
       run: npm run test:e2e
       env:
-        DB_HOST: mariadb
-        DB_USER: root
-        DB_PASSWORD: root
-        DB_NAME: ticketing
+        DB_HOST: ${{ env.DB_HOST }}
+        DB_USER: ${{ env.DB_USER }}
+        DB_PASSWORD: ${{ env.DB_PASSWORD }}
+        DB_NAME: ${{ env.DB_NAME }}
 
     - name: Build Docker image
       run: docker build -t ${{ secrets.DOCKER_USERNAME }}/ticketing-app .
