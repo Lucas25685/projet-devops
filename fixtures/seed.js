@@ -20,7 +20,7 @@ async function seed() {
     console.error('Erreur lors de l\'initialisation ou de l\'insertion des données :', err);
   } finally {
     if (conn) conn.end();
-    process.exit(1);
+    process.exit(0);
   }
 }
 

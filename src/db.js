@@ -10,6 +10,7 @@ const connect = (host, user, password, database = null) => {
   if (database) {
     config.database = database;
   }
+  console.log('Seeding with host:', process.env.DB_HOST);
   return mariadb.createPool(config);
 };
 
