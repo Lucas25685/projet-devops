@@ -61,10 +61,7 @@ jobs:
       run: npm run test:unit
 
     - name: Build app
-      run: npm run build
-
-    - name: Run app
-      run: npx serve -s build -l 3000 &
+      run: npm run start &
 
     - name: Wait for server
       run: npx wait-on http://localhost:3000
