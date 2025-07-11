@@ -8,5 +8,7 @@ test('GET / returns 200', async () => {
 });
 
 afterAll(async () => {
+  //délai pour être sur que tout ce qui est en arriere plan est terminé
+  await new Promise((res) => setTimeout(res, 100));
   await pool.end();
 });
