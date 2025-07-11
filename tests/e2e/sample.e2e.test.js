@@ -14,11 +14,12 @@ describe('Création de ticket et vérification dans la liste', () => {
   });
 
   it('soumet un ticket via le formulaire et vérifie sa présence sur /tickets', async () => {
+
     const testEmail = `user${Date.now()}@test.com`;
     const message = 'Test message';
     const type = '1';
 
-    await page.goto('http://localhost:3000/tickets/create');
+    await page.goto('http://localhost:3000');
 
     await page.type('input[name="email"]', testEmail);
     await page.select('select[name="type_id"]', type);
@@ -29,7 +30,12 @@ describe('Création de ticket et vérification dans la liste', () => {
       page.click('button[type="submit"]')
     ]);
 
-    await page.goto('http://localhost:3000/tickets');
+    await page.authenticate({
+      username: 'admin',
+      password: 'admin123'
+    });
+
+    await page.goto('http://localhost:3000/tickets', );
 
     const ticketVisible = await page.evaluate((email) => {
       /* eslint-disable-next-line no-undef */
